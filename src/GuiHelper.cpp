@@ -1,6 +1,7 @@
 #include "GuiHelper.h"
 
 #include <cstring>
+#include <algorithm>
 
 void PaintButton(const Button& button)
 {
@@ -20,6 +21,14 @@ void PaintButton(const Button& button)
   if(button.clickState == 1)
   {
     DrawRectangleRec(button.pos, BLUE);
+    DrawCircle(button.pos.x+button.pos.width/2, button.pos.y+button.pos.height/2, std::min(button.pos.width, button.pos.height)/2-4, BLACK);
+    DrawCircle(button.pos.x+button.pos.width/2, button.pos.y+button.pos.height/2, std::min(button.pos.width, button.pos.height)/2-8, BLUE);
+  }
+  if(button.clickState == 2)
+  {
+    DrawRectangleRec(button.pos, RED);
+    DrawLineEx({button.pos.x, button.pos.y}, {button.pos.x+button.pos.width, button.pos.y+button.pos.height}, 2, BLACK);
+    DrawLineEx({button.pos.x+button.pos.width, button.pos.y}, {button.pos.x, button.pos.y+button.pos.height}, 2, BLACK);
   }
  }
 

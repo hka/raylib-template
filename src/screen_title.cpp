@@ -36,7 +36,8 @@ void TitleScreen::Update()
     bool buttonPressed = CheckButton(mousePoint, b);
     if(buttonPressed)
     {
-      b.clickState = !b.clickState;
+      ++b.clickState;
+      b.clickState = b.clickState > 2 ? 0 : b.clickState;
     }
   }
 }
